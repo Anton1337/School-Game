@@ -146,6 +146,8 @@ MonoBehaviour:
   speed: 200
   jumpForce: 6
   numberOfJumps: 2
+  bulletPrefab: {fileID: 1183989660423372, guid: bae2fc0f4fb10264c9e6722639e17618,
+    type: 2}
 --- !u!58 &132753771
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 7baa997bcd25f90428dcf40ab00faa39, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -217,7 +219,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.2971698, g: 0.31051156, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -279,6 +281,21 @@ Prefab:
     - target: {fileID: 4450651977339788, guid: 0e2cb93eabb314c4f9bed9eda8ac7cda, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212893893772324746, guid: 0e2cb93eabb314c4f9bed9eda8ac7cda,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.8770375
+      objectReference: {fileID: 0}
+    - target: {fileID: 212893893772324746, guid: 0e2cb93eabb314c4f9bed9eda8ac7cda,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.3820755
+      objectReference: {fileID: 0}
+    - target: {fileID: 212893893772324746, guid: 0e2cb93eabb314c4f9bed9eda8ac7cda,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e2cb93eabb314c4f9bed9eda8ac7cda, type: 2}
@@ -361,7 +378,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0f8e297be64f2f648943ef142c49efcd, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.27230465, g: 1, b: 0.25943398, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
