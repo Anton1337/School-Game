@@ -8,9 +8,7 @@ public class Player : MonoBehaviour {
     Rigidbody2D rb;
 
     public float speed;
-    public float jumpForce;
-    public int numberOfJumps = 2;
-    public bool isRight;
+    public float rotateOffset;
 
     public GameObject bulletPrefab;
 
@@ -22,36 +20,30 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        RotateWithCursor();
         Move();
-        Jump();
         Shoot();
 	}
 
+    private void RotateWithCursor()
+    {
+        Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotateOffset);
+    }
+
     private void Shoot()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if(Input.GetMouseButtonDown(0))
         {
-            if(isRight)
-                Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            else
-                Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(-transform.forward, Vector3.up));
+            Instantiate(bulletPrefab, transform.position, transform.rotation);
         }
     }
 
     void Move(){
-        float dir = Input.GetAxisRaw("Horizontal");
+        float xDir = Input.GetAxisRaw("Horizontal");
+        float yDir = Input.GetAxisRaw("Vertical");
 
-        if (dir < 0)
-            isRight = false;
-        else if (dir > 0)
-            isRight = true;
-
-        rb.velocity = new Vector2(dir * speed * Time.deltaTime, rb.velocity.y);
-    }
-
-    void Jump(){
-        if (Input.GetKeyDown(KeyCode.W)){
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        }
+        rb.velocity = new Vector2(xDir, yDir).normalized * speed * Time.deltaTime;
     }
 }

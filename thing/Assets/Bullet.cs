@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour {
 
     private void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.up * speed * Time.deltaTime);
     }
 
 }
