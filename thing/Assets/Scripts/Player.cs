@@ -5,19 +5,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    public float speed;
-    public float rotateOffset;
+    [SerializeField]
+    private float speed;
+    [SerializeField]
+    private float rotateOffset;
 
-    public GameObject bulletPrefab;
+    [SerializeField]
+    private float timeInbetweenShots;
+    private float startTimeInbetweenShots;
 
-	// Use this for initialization
+    [SerializeField]
+    private GameObject bulletPrefab;
+
 	void Start () {
         rb = GetComponent<Rigidbody2D>();
+
+        startTimeInbetweenShots = timeInbetweenShots;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 
         RotateWithCursor();
@@ -34,9 +41,13 @@ public class Player : MonoBehaviour {
 
     private void Shoot()
     {
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButton(0) & startTimeInbetweenShots <= 0)
         {
             Instantiate(bulletPrefab, transform.position, transform.rotation);
+            startTimeInbetweenShots = timeInbetweenShots;
+        } else
+        {
+            startTimeInbetweenShots -= Time.deltaTime;
         }
     }
 
@@ -44,6 +55,9 @@ public class Player : MonoBehaviour {
         float xDir = Input.GetAxisRaw("Horizontal");
         float yDir = Input.GetAxisRaw("Vertical");
 
-        rb.velocity = new Vector2(xDir, yDir).normalized * speed * Time.deltaTime;
+        Vector2 movement = ( (Camera.main.transform.up * yDir) + 
+                           (Camera.main.transform.right * xDir) ).normalized * 
+                           speed * Time.deltaTime * 100;
+        rb.velocity = movement;
     }
 }
