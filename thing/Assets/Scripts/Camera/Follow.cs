@@ -9,13 +9,13 @@ public class Follow : MonoBehaviour {
     private Transform following;
 
     [SerializeField]
-    private RectTransform UIPanel;
+    //private RectTransform UIPanel;
 
     private float playerCenterOffset;
 
     private void Awake()
     {
-        playerCenterOffset = UIPanel.rect.width / 2;
+        //playerCenterOffset = UIPanel.rect.width / 2;
         Debug.Log(playerCenterOffset);
     }
 
