@@ -8,7 +8,7 @@ public class EquipmentPanel : MonoBehaviour {
 
     public event Action<Item> OnItemRightClickedEvent;
 
-    private void Awake()
+    private void Start()
     {
         foreach (var slot in equipmentSlots)
         {
