@@ -13,12 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemName: Armor of Nil
   Icon: {fileID: 21300000, guid: a4ea44ed3a30eb74f9074a5f99a777fc, type: 3}
-  DamageBonus: 3
+  DamageBonus: 0
   SpeedBonus: 0
-  AttackSpeedBonus: 0
-  DefenseBonus: 0
-  DamagePercentBonus: 0
-  SpeedPercentBonus: 0
-  AttackSpeedPercentBonus: 0
-  DefencePercentBonus: 0
+  AttackSpeedBonus: 3
+  DefenseBonus: 20
   EquipmentType: 2

@@ -14,11 +14,7 @@ MonoBehaviour:
   ItemName: Bow of the Void
   Icon: {fileID: 21300000, guid: c521888fa200ff249aed52d0f1eb232f, type: 3}
   DamageBonus: 10
-  SpeedBonus: 0
-  AttackSpeedBonus: 0
+  SpeedBonus: 3
+  AttackSpeedBonus: 3
   DefenseBonus: 0
-  DamagePercentBonus: 0
-  SpeedPercentBonus: 0
-  AttackSpeedPercentBonus: 0
-  DefencePercentBonus: 0
   EquipmentType: 0

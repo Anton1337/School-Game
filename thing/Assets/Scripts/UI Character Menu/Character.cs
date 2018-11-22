@@ -1,12 +1,22 @@
 ﻿using UnityEngine;
+using Anton.CharacterStats;
 
-public class InventoryManager : MonoBehaviour {
+public class Character : MonoBehaviour {
+
+    public CharacterStat Damage;
+    public CharacterStat Speed;
+    public CharacterStat AttackSpeed;
+    public CharacterStat Defense;
 
     [SerializeField] Inventory inventory;
     [SerializeField] EquipmentPanel equipmentPanel;
+    [SerializeField] StatPanel statPanel;
 
     private void Awake()
     {
+        statPanel.setStats(Damage, Speed, AttackSpeed, Defense);
+        statPanel.UpdateStatValues();
+
         inventory.OnItemRightClickedEvent += EquipFromInventory;
         equipmentPanel.OnItemRightClickedEvent += UnequipFromEquipPanel;
     }
@@ -37,7 +47,11 @@ public class InventoryManager : MonoBehaviour {
                 if(previousItem != null)
                 {
                     inventory.AddItem(previousItem);
+                    previousItem.Unequip(this);
+                    statPanel.UpdateStatValues();
                 }
+                item.Equip(this);
+                statPanel.UpdateStatValues();
             } else
             {
                 inventory.AddItem(item);
@@ -49,6 +63,8 @@ public class InventoryManager : MonoBehaviour {
     {
         if(!inventory.IsFull() && equipmentPanel.RemoveItem(item))
         {
+            item.Unequip(this);
+            statPanel.UpdateStatValues();
             inventory.AddItem(item);
         }
     }

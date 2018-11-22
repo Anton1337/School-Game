@@ -16,9 +16,5 @@ MonoBehaviour:
   DamageBonus: 7
   SpeedBonus: 0
   AttackSpeedBonus: 0
-  DefenseBonus: 0
-  DamagePercentBonus: 0
-  SpeedPercentBonus: 0
-  AttackSpeedPercentBonus: 0
-  DefencePercentBonus: 0
+  DefenseBonus: 10
   EquipmentType: 3
